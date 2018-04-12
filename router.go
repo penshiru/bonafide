@@ -23,7 +23,7 @@ func InitRouter(config *Config) *gin.Engine {
 		}
 
 		if err := SaveUploadedFile(file, file.Filename, "tmp"); err != nil {
-			c.String(http.StatusBadRequest, fmt.Sprintf("upload file err: %s", err.Error()))
+			c.JSON(http.StatusBadRequest, fmt.Sprintf("upload file err: %s", err.Error()))
 			return
 		}
 		c.JSON(http.StatusOK, gin.H{"status": "not Implemented"})
