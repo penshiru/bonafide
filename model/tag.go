@@ -1,9 +1,9 @@
-package main
+package model
 
 //Tag holds then regex used to parse a law file
 type Tag struct {
-	name  string
-	regex string
+	Name  string
+	Regex string
 }
 
 //NewIntroTags returns an array of Intro Tags
