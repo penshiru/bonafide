@@ -2,6 +2,18 @@
 
 
 [[projects]]
+  name = "github.com/davecgh/go-spew"
+  packages = ["spew"]
+  revision = "346938d642f2ec3594ed81d874461961cd0faa76"
+  version = "v1.1.0"
+
+[[projects]]
+  name = "github.com/dgrijalva/jwt-go"
+  packages = ["."]
+  revision = "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e"
+  version = "v3.2.0"
+
+[[projects]]
   name = "github.com/fsnotify/fsnotify"
   packages = ["."]
   revision = "c2828203cd70a50dcccfb2761f8b1f8ceef9a8e9"
@@ -51,6 +63,27 @@
     "json/token"
   ]
   revision = "ef8a98b0bbce4a65b5aa4c368430a80ddc533168"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/lestrrat-go/jwx"
+  packages = [
+    "internal/base64",
+    "internal/option",
+    "jwa",
+    "jwk",
+    "jws",
+    "jws/sign",
+    "jws/verify",
+    "jwt"
+  ]
+  revision = "0cb38412795e7e5e18194ed3f1b363fc1cd88e06"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/lestrrat-go/pdebug"
+  packages = ["."]
+  revision = "39f9a71bcabe9432cbdfe4d3d33f41988acd2ce6"
 
 [[projects]]
   name = "github.com/magiconair/properties"
@@ -106,8 +139,8 @@
 [[projects]]
   name = "github.com/spf13/pflag"
   packages = ["."]
-  revision = "e57e3eeb33f795204c1ca35f56c44f83227c6e66"
-  version = "v1.0.0"
+  revision = "583c0c0531f06d5278b7d917446061adc344b5cd"
+  version = "v1.0.1"
 
 [[projects]]
   name = "github.com/spf13/viper"
@@ -125,7 +158,7 @@
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "3b87a42e500a6dc65dae1a55d0b641295971163e"
+  revision = "2281fa97ef7b0c26324634d5a22f04babdac8713"
 
 [[projects]]
   name = "golang.org/x/text"
@@ -161,6 +194,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "41b826ef8d96bc6ee13b3bc6e42d8aa20848db74a8d9e0f6bea156400b92a6df"
+  inputs-digest = "e37b02939baf90dda01c35646e030b31e8b4d7d44e77fcf2695dba2cb09d5b4b"
   solver-name = "gps-cdcl"
   solver-version = 1

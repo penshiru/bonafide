@@ -11,14 +11,14 @@ import (
 
 //Config struct, must be injected where needed.
 type Config struct {
-	seed string
+	secret string
 }
 
 //InitConfig reads configuration files
 func InitConfig() (*Config, error) {
 
 	var (
-		seed string
+		secret string
 	)
 
 	if os.Getenv("ENV") == "PRODUCTION" {
@@ -26,7 +26,7 @@ func InitConfig() (*Config, error) {
 		viper.AutomaticEnv()
 		fmt.Println("Using Env Config")
 
-		seed = viper.Get("seed").(string)
+		secret = viper.Get("secret").(string)
 	} else {
 		fmt.Println("Using Conf File")
 		viper.SetConfigName(".conf")
@@ -38,11 +38,11 @@ func InitConfig() (*Config, error) {
 			return nil, errors.Wrap(err, "Trying to read config")
 		}
 
-		seed = viper.GetString("bonafide.seed")
+		secret = viper.GetString("bonafide.secret")
 
 	}
 
-	config := NewConfig(seed)
+	config := NewConfig(secret)
 
 	//create ./tmp folder on startup
 	if _, err := os.Stat("./tmp"); os.IsNotExist(err) {
@@ -55,6 +55,6 @@ func InitConfig() (*Config, error) {
 //NewConfig Returns a new configuration object
 func NewConfig(vals ...string) *Config {
 	return &Config{
-		seed: vals[0],
+		secret: vals[0],
 	}
 }
