@@ -1,28 +1,27 @@
 package main
 
 import (
-	"encoding/json"
-	"errors"
-	"fmt"
-	"io"
-
-	"github.com/lestrrat-go/jwx/jwa"
-	jwt "github.com/lestrrat-go/jwx/jwt"
+	"github.com/dgrijalva/jwt-go"
 )
 
+// CustomClaims is our custom metadata, which will be hashed
+// and sent as the second segment in our JWT
+type CustomClaims struct {
+	jwt.StandardClaims
+}
+
 //Auth Verifies if the token is valid. If error is nil, is valid
-func Auth(config *Config, v io.Reader) error {
-	token, err := jwt.Parse(v, jwt.WithVerify(jwa.HS256, config.secret))
-	if err != nil {
-		return errors.New("Could not parse JWT token")
-	}
-	buf, err := json.MarshalIndent(token, "", "  ")
-	if err != nil {
-		fmt.Printf("failed to generate JSON: %s\n", err)
-		return err
+func Auth(config *Config, tokenString string) (*CustomClaims, error) {
+
+	// Parse the token
+	token, err := jwt.ParseWithClaims(tokenString, &CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
+		return config.Secret, nil
+	})
+
+	// Validate the token and return the custom claims
+	if claims, ok := token.Claims.(*CustomClaims); ok && token.Valid {
+		return claims, nil
 	}
 
-	fmt.Printf("%s\n", buf)
-
-	return nil
+	return nil, err
 }
