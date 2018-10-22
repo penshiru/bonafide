@@ -25,7 +25,7 @@ type Law struct {
 type LawStore interface {
 	GetLaws() ([]Law, error)
 	InsertLawDB(law *Law) error
-	CreateLaw() (int64, error)
+	CreateLaw() (uint, error)
 	GetLaw(id string) (Law, error)
 	AutoComplete(query string) ([]string, error)
 }
