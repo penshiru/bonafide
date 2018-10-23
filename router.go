@@ -16,7 +16,8 @@ func InitRouter(config *Config) *gin.Engine {
 
 	router.POST("/parse", func(c *gin.Context) {
 
-		file, err := c.FormFile("law")
+		//read file
+		file, err := c.FormFile("file")
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"status": "fail", "msg": "Could not upload file"})
 			return
