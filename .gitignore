@@ -1,3 +1,4 @@
 .conf.toml
 bonafide
 vendor
+temp/
