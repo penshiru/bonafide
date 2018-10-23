@@ -12,9 +12,8 @@ import (
 	"sync"
 	"time"
 
-	"bitbucket.org/reneval/bonafide/model"
-
 	"github.com/goodsign/monday"
+	"github.com/penshiru/bonafide/model"
 )
 
 type foundTag struct {
@@ -285,7 +284,7 @@ func jsonFormat2(stack *model.Stack, mLaw *model.Law) *model.Law {
 		switch element := element.(type) {
 
 		case model.Book:
-			fmt.Printf("Book", element.Name)
+			fmt.Println("Book", element.Name)
 			mLaw.AddBook(element)
 			currentBook++
 			currentChapter = -1
@@ -324,8 +323,10 @@ func jsonFormat2(stack *model.Stack, mLaw *model.Law) *model.Law {
 			hasChapter = true
 		case model.Article:
 			fmt.Println("Article", element.Name)
-
 			if hasBook {
+				fmt.Println("*Book", mLaw.Books[currentBook].Name)
+				fmt.Println("*Title", mLaw.Books[currentBook].Titles[currentTitle].Name)
+				fmt.Println("*Chapter", mLaw.Books[currentBook].Titles[currentTitle].Chapters[currentChapter].Name)
 				mLaw.Books[currentBook].Titles[currentTitle].Chapters[currentChapter].AddArticle(element)
 			} else {
 				if hasTitle {

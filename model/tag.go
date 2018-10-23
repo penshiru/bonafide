@@ -21,7 +21,7 @@ func NewIntroTags() []Tag {
 func NewBodyTags() []Tag {
 	return []Tag{
 		Tag{"Titulo", "^\f?(TÍTULO\\s?([IVX\u00C0-\u00FF]|$)|^TITULO\\s?([IVX\u00C0-\u00FF]|$)|TITULO\\s\\w+$|TÍTULO\\s\\w+$)"},
-		Tag{"Capitulo", "^\f?(?:Capítulo\\s[\u00C0-\u00FF]?\\w+$|Capí?tulo\\s?\\w{0,3}$|Capitulo\\s?\\w{0,3}$|CAP(Í?|I?)TULO\\s?)"},
+		Tag{"Capitulo", "^\f?(?:Cap(i?|í?)tulo\\s[\u00C0-\u00FF]?\\w+$|Capí?tulo\\s?\\w{0,3}$|Capitulo\\s?\\w{0,3}$|CAP(Í?|I?)TULO\\s?)"},
 		Tag{"Arto", `^\f?(?:Art.\s\d+|Arto.\s\d+|Artículo\s\d+|Articulo\s\d+)`},
 		Tag{"Libro", "^\f?(LIBRO\\s[IVXLCDM]+$|LIBRO\\s\\w+$)"},
 	}

@@ -23,11 +23,15 @@ func InitRouter(config *Config) *gin.Engine {
 			return
 		}
 
-		if err := SaveUploadedFile(file, file.Filename, "tmp"); err != nil {
+		loc, err := SaveUploadedFile(file, file.Filename, "tmp")
+		if err != nil {
 			c.JSON(http.StatusBadRequest, fmt.Sprintf("upload file err: %s", err.Error()))
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{"status": "not Implemented"})
+
+		law := ParseConcurrent(loc)
+		c.JSON(http.StatusOK, gin.H{"status": "success", "data": law})
+
 	})
 
 	return router
